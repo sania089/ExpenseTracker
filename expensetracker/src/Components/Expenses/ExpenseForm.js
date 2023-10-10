@@ -21,7 +21,7 @@ function ExpenseForm() {
 
     const handleInput = name => e => {
         setInputState({...inputState, [name]: e.target.value})
-        setError('')
+        // setError([])
     }
 
     const handleSubmit = e => {
