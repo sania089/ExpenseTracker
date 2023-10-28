@@ -3,6 +3,7 @@ import axios from 'axios'
 import { clothing } from "../utils/Icons";
 
 
+
 const BASE_URL = "http://localhost:5000/api/v1/";
 
 
@@ -13,6 +14,7 @@ export const GlobalProvider = ({children}) => {
     const [incomes, setIncomes] = useState([])
     const [expenses, setExpenses] = useState([])
     const [error, setError] = useState(null)
+    const [Signup, setDetail] =useState([])
 
     //calculate incomes
     const addIncome = async (income) => {
@@ -80,6 +82,20 @@ export const GlobalProvider = ({children}) => {
         history.sort((a, b) =>{
             return new Date(b.createdAt) - new Date(a.createdAt)
         })
+    const getDetails= async () => {
+        const response = await axios.get(`${BASE_URL}get-details`)
+        setDetail(response.data)
+        console.log(response.data)
+        }
+    const addDetails = async (Signup) => {
+        const response = await axios.post(`${BASE_URL}add-details`, Signup)
+            .catch((err) =>{
+                setError(err.response.data.message)
+            })
+        getDetails()
+    }
+    
+
 
         return history
     }
@@ -91,6 +107,7 @@ export const GlobalProvider = ({children}) => {
             incomes,
             deleteIncome,
             expenses,
+           
             totalIncome,
             addExpense,
             getExpenses,
@@ -98,6 +115,7 @@ export const GlobalProvider = ({children}) => {
             totalExpenses,
             totalBalance,
             transactionHistory
+
         }}>
             {children}
         </GlobalContext.Provider>
