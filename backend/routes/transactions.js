@@ -1,6 +1,6 @@
 const { addExpense, getExpense, deleteExpense } = require('../controllers/expense');
 const { addIncome, getIncomes, deleteIncome } = require('../controllers/income');
-const {addDetails, getSignup} = require('../controllers/signup')
+const {addDetails, getDetails} = require('../controllers/signup')
 
 
 const router = require('express').Router();
@@ -13,7 +13,7 @@ router.post('/add-income', addIncome)
     .get('/get-expenses', getExpense)
     .delete('/delete-expense/:id', deleteExpense)
     .post('/add-details', addDetails)
-    .get('/get-details',getSignup)
+    .get('/get-details',getDetails)
 
 
 module.exports = router

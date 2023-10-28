@@ -2,74 +2,54 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { useGlobalContext } from '../../context/globalContext';
 import { InnerLayout } from '../../styles/Layouts';
-import Form from '../Form/Form/Form';
+import signupform from '../../signup/signupform';
 
-function Income() {
-    const {addIncome, incomes, getIncomes, deleteIncome, totalIncome} = useGlobalContext()
+function Signup() {
+    const {getDetails, addDetails} = useGlobalContext()
 
     useEffect(() =>{
-        getIncomes()
+        getDetails()
     }, [])
     return (
-        <IncomeStyled>
+        <SignupStyled>
             <InnerLayout>
-                <h1>Incomes</h1>
-                <h2 className="total-income">Total Income: <span>Rs{totalIncome()}</span></h2>
-                <div className="income-content">
+                <h1>Signup</h1>
+                <div className="details-content">
                     <div className="form-container">
-                        <Form />
+                        <signupform />
                     </div>
-                    <div className="incomes">
-                        {incomes.map((income) => {
-                            const {_id, title, amount, date, category, description, type} = income;
-                            return <IncomeItem
+                    <div className="details">
+                        {detail.map((details) => {
+                            const {_id, name,username,password,age,profession} = details;
+                            return <DeatilItem
                                 key={_id}
                                 id={_id} 
-                                title={title} 
-                                description={description} 
-                                amount={amount} 
-                                date={date} 
-                                type={type}
-                                category={category} 
+                                name={name} 
+                                dusername={username} 
+                                password={password} 
+                                age={age} 
+                                profession={profession}
                                 indicatorColor="var(--color-green)"
-                                deleteItem={deleteIncome}
                             />
                         })}
                     </div>
                 </div>
             </InnerLayout>
-        </IncomeStyled>
+        </SignupStyled>
     )
 }
 
-const IncomeStyled = styled.div`
+const SignupStyled = styled.div`
     display: flex;
     overflow: auto;
-    .total-income{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: #FCF6F9;
-        border: 2px solid #FFFFFF;
-        box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
-        border-radius: 20px;
-        padding: 1rem;
-        margin: 1rem 0;
-        font-size: 2rem;
-        gap: .5rem;
-        span{
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--color-green);
-        }
     }
-    .income-content{
+    .details-content{
         display: flex;
         gap: 2rem;
-        .incomes{
+        .details{
             flex: 1;
         }
     }
 `;
 
-export default Income
+export default Signup

@@ -20,7 +20,7 @@ exports.addDetails = async (req, res) => {
         if(age <= 15 || !age === 'number'){
             return res.status(400).json({message: 'You must be above 15 years old!'})
         }
-        await detail.save()
+        await Signup.save()
         res.status(200).json({message: 'Details added'})
     } catch (error) {
         res.status(500).json({message: 'Server Error'})
@@ -28,9 +28,9 @@ exports.addDetails = async (req, res) => {
 
     console.log(Signup)
 }
-exports.getSignup = async (req, res) =>{
+exports.getDetails = async (req, res) =>{
     try {
-        const Signup = await SignupSchema.find().sort({createdAt: -1})
+        const Signup = await Schema.find().sort({createdAt: -1})
         res.status(200).json(Signup)
     } catch (error) {
         res.status(500).json({message: 'Server Error'})
