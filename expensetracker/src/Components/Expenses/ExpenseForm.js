@@ -5,8 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useGlobalContext } from '../../context/globalContext';
 import Button from '../Button/Button';
 import { plus } from '../../utils/Icons';
-
-
+// import PieChart from '../Pie/PieChart';
 function ExpenseForm() {
     const {addExpense, error, setError} = useGlobalContext()
     const [inputState, setInputState] = useState({
@@ -16,16 +15,39 @@ function ExpenseForm() {
         category: '',
         description: '',
     })
-
+    const [categoryCount, setCategoryCount] = useState({
+        education: 0,
+        groceries: 0,
+        health: 0,
+        subscriptions: 0,
+        takeaways: 0,
+        clothing: 0,
+        travelling: 0,
+        other: 0
+      });
+    
     const { title, amount, date, category,description } = inputState;
-
+   
+    
+    
+      
     const handleInput = name => e => {
         setInputState({...inputState, [name]: e.target.value})
+
+        
         // setError([])
     }
-
+    
     const handleSubmit = e => {
         e.preventDefault()
+        // Increment the category count for the selected category
+        const selectedCategory = e.target.category.value;
+        setCategoryCount({
+        ...categoryCount,
+        [selectedCategory]: categoryCount[selectedCategory] + 1
+        });
+        
+
         addExpense(inputState)
         setInputState({
             title: '',
@@ -35,9 +57,11 @@ function ExpenseForm() {
             description: '',
         })
     }
-
+    
     return (
+
         <ExpenseFormStyled onSubmit={handleSubmit}>
+            {console.log(categoryCount)}
             {error && <p className='error'>{error}</p>}
             <div className="input-control">
                 <input 
@@ -80,6 +104,9 @@ function ExpenseForm() {
                     <option value="other">Other</option>  
                 </select>
             </div>
+
+            {/* <PieChart categoryCount={categoryCount}/> */}
+
             <div className="input-control">
                 <textarea name="description" value={description} placeholder='Add A Reference' id="description" cols="30" rows="4" onChange={handleInput('description')}></textarea>
             </div>
@@ -95,6 +122,7 @@ function ExpenseForm() {
             </div>
         </ExpenseFormStyled>
     )
+
 }
 
 
