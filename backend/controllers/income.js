@@ -13,19 +13,39 @@ exports.addIncome = async (req, res) => {
     })
 
     try {
-        //validations
-        if(!title || !category || !description || !date){
-            return res.status(400).json({message: 'All fields are required!'})
+        // Validate title
+        if (!title) {
+            return res.status(400).json({ message: 'Title is required!' });
         }
-        if(amount <= 0 || !amount === 'number'){
-            return res.status(400).json({message: 'Amount must be a positive number!'})
+    
+        // Validate category
+        if (!category) {
+            return res.status(400).json({ message: 'Category is required!' });
         }
-        await income.save()
-        res.status(200).json({message: 'Income Added'})
+    
+        // Validate description
+        if (!description) {
+            return res.status(400).json({ message: 'Description is required!' });
+        }
+    
+        // Validate date
+        if (!date) {
+            return res.status(400).json({ message: 'Date is required!' });
+        }
+    
+        // Validate amount (positive number)
+        if (isNaN(amount) || amount <= 0) {
+            return res.status(400).json({ message: 'Amount must be a positive number!' });
+        }
+    
+        // If all conditions pass, save the income
+        await income.save();
+    
+        res.status(200).json({ message: 'Income Added' });
     } catch (error) {
-        res.status(500).json({message: 'Server Error'})
+        res.status(500).json({ message: 'Server Error' });
     }
-
+    
     console.log(income)
 }
 exports.getIncomes = async (req, res) =>{

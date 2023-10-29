@@ -6,7 +6,7 @@ import SignupForm from './signupform';
 // import SignupItem from './SignupItem';
 
 function Signup() {
-    const {getDetails, addDetails} = useGlobalContext()
+    const {getDetails, signtry , addDetails} = useGlobalContext()
 
     useEffect(() =>{
         getDetails()
@@ -19,9 +19,9 @@ function Signup() {
                     <div className="form-container">
                         <SignupForm />
                     </div>
-                    <div className="details">
-                        {/* {addDetails.map((details) => {
-                            const {_id, name,username,password,age,profession} = details;
+                    {/* <div className="detail">
+                        {signtry.map((detail) => {
+                            const {name,username,password,age,profession} = detail;
                             return <>
 
                             </>
@@ -36,8 +36,8 @@ function Signup() {
                             //     profession={profession}
                             //     indicatorColor="var(--color-green)"
                             // />
-                        })} */}
-                    </div>
+                        })}
+                    </div> */}
                 </div>
             </InnerLayout>
         </SignupStyled>
@@ -48,7 +48,7 @@ const SignupStyled = styled.div`
     display: flex;
     overflow: auto;
     }
-    .details-content{
+    .detail-content{
         display: flex;
         gap: 2rem;
         .details{

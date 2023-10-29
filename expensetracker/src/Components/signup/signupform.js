@@ -22,7 +22,7 @@ function SignupForm(){
     const handleSubmit = e => {
         e.preventDefault()
         addDetails(inputState)
-        getDetails()
+        // getDetails()
         setInputState({
             name: '',
             username:'',
@@ -77,8 +77,17 @@ function SignupForm(){
                 />
                 
             </div>
-            
-            
+            <div className="input-control">
+                <input 
+                type="text" 
+                value={profession}
+                name={'profession'}
+                placeholder="Enter your profession"
+                onChange={handleInput('profession')}
+
+                />
+
+            </div>
             <div className="submit-btn">
                 <Button 
                     name={'Add Details'}
@@ -89,18 +98,7 @@ function SignupForm(){
                     color={'#fff'}
                 />
             </div>
-            <div className="input-control">
-                <input 
-                type="text" 
-                value={profession}
-                name={"profession"}
-                placeholder="Enter your profession"
-                onChange={handleInput('profession')}
 
-                />
-
-            </div>
-            
         </FormStyled>
     )
 }

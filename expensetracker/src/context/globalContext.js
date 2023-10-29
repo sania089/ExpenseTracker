@@ -14,7 +14,7 @@ export const GlobalProvider = ({children}) => {
     const [incomes, setIncomes] = useState([])
     const [expenses, setExpenses] = useState([])
     const [error, setError] = useState(null)
-    const [Signup, setDetail] =useState([])
+    const [signtry, setDetail] =useState([])
 
     //calculate incomes
     const addIncome = async (income) => {
@@ -84,20 +84,19 @@ export const GlobalProvider = ({children}) => {
         })
         return history
     }
-    const addDetails = async (Signup) => {
-        const response = await axios.post(`${BASE_URL}add-details`, Signup)
+    
+    const addDetails = async (detail) => {
+        const response = await axios.post(`${BASE_URL}add-details`, detail)
             .catch((err) =>{
                 setError(err.response.data.message)
             })
-        getDetails()
+        // getDetails()
     }
     const getDetails= async () => {
         const response = await axios.get(`${BASE_URL}get-details`)
         setDetail(response.data)
         console.log(response.data)
         }
-    
-
     return (
         <GlobalContext.Provider value={{
             addIncome,
