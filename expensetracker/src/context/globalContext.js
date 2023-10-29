@@ -82,11 +82,8 @@ export const GlobalProvider = ({children}) => {
         history.sort((a, b) =>{
             return new Date(b.createdAt) - new Date(a.createdAt)
         })
-    const getDetails= async () => {
-        const response = await axios.get(`${BASE_URL}get-details`)
-        setDetail(response.data)
-        console.log(response.data)
-        }
+        return history
+    }
     const addDetails = async (Signup) => {
         const response = await axios.post(`${BASE_URL}add-details`, Signup)
             .catch((err) =>{
@@ -94,11 +91,12 @@ export const GlobalProvider = ({children}) => {
             })
         getDetails()
     }
+    const getDetails= async () => {
+        const response = await axios.get(`${BASE_URL}get-details`)
+        setDetail(response.data)
+        console.log(response.data)
+        }
     
-
-
-        return history
-    }
 
     return (
         <GlobalContext.Provider value={{
@@ -114,7 +112,9 @@ export const GlobalProvider = ({children}) => {
             deleteExpense,
             totalExpenses,
             totalBalance,
-            transactionHistory
+            transactionHistory,
+            addDetails,
+            getDetails
 
         }}>
             {children}

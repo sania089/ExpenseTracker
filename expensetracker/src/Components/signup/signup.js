@@ -2,7 +2,8 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { useGlobalContext } from '../../context/globalContext';
 import { InnerLayout } from '../../styles/Layouts';
-import signupform from '../../signup/signupform';
+import SignupForm from './signupform';
+// import SignupItem from './SignupItem';
 
 function Signup() {
     const {getDetails, addDetails} = useGlobalContext()
@@ -16,22 +17,26 @@ function Signup() {
                 <h1>Signup</h1>
                 <div className="details-content">
                     <div className="form-container">
-                        <signupform />
+                        <SignupForm />
                     </div>
                     <div className="details">
-                        {detail.map((details) => {
+                        {/* {addDetails.map((details) => {
                             const {_id, name,username,password,age,profession} = details;
-                            return <DeatilItem
-                                key={_id}
-                                id={_id} 
-                                name={name} 
-                                dusername={username} 
-                                password={password} 
-                                age={age} 
-                                profession={profession}
-                                indicatorColor="var(--color-green)"
-                            />
-                        })}
+                            return <>
+
+                            </>
+                            
+                            // <SignupItem
+                            //     key={_id}
+                            //     id={_id} 
+                            //     name={name} 
+                            //     dusername={username} 
+                            //     password={password} 
+                            //     age={age} 
+                            //     profession={profession}
+                            //     indicatorColor="var(--color-green)"
+                            // />
+                        })} */}
                     </div>
                 </div>
             </InnerLayout>

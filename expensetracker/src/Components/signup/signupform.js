@@ -1,11 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import styled from "styled-components";
-import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
-import Button from "../../Button/Button";
-import { plus } from "../../../utils/Icons";
-import { useGlobalContext } from "../../../context/globalContext";
+import Button from "../Button/Button";
+import { plus } from "../../utils/Icons";
+import { useGlobalContext } from "../../context/globalContext";
 
 function SignupForm(){
     const{addDetails, getDetails} = useGlobalContext()
@@ -90,6 +89,17 @@ function SignupForm(){
                     color={'#fff'}
                 />
             </div>
+            <div className="input-control">
+                <input 
+                type="text" 
+                value={profession}
+                name={"profession"}
+                placeholder="Enter your profession"
+                onChange={handleInput('profession')}
+
+                />
+
+            </div>
             
         </FormStyled>
     )
@@ -132,4 +142,4 @@ const FormStyled=styled.form`
 
 
 `;
-export default Form
+export default SignupForm
