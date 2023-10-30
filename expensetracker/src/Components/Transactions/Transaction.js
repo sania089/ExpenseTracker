@@ -142,98 +142,105 @@ const Transaction = () => {
 }
 
 const DashboardStyled = styled.div`
-  .stats-con {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 2rem;
-    overflow: auto;
-
-    .chart-con {
-      grid-column: 1 / 4;
-      height: 300px;
-      .amount-con {
+    .stats-con{
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(5, 1fr);
         gap: 2rem;
-        margin-top: 2rem;
-        .income,
-        .expense,
-        .balance {
-          background: #FCF6F9;
-          border: 2px solid #FFFFFF;
-          box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
-          border-radius: 20px;
-          padding: 1rem;
-          p {
-            font-size: 3rem;
-            font-weight: 700;
-          }
-        }
-        .income, .expense {
-          grid-column: span 2;
-        }
-        .balance {
-          grid-column: 2 / 4;
-          p {
-            color: var(--color-green);
-            opacity: 0.6;
-            font-size: 4rem;
-          }
-        }
-      }
-    }
-    
-    .chart-below {
-      grid-column: 1 / -1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+        overflow: auto;
+        .chart-con{
+            grid-column: 1 / 4;
+            height: 300px;
+            .amount-con{
+              position: absolute;
+              z-index: 0;
+              top: 25%;
+              right: 4%;
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 2rem;
+                margin-top: 2rem;
+                
+                
+                .income,
+                .expense {
+                  grid-column: span 2;
+                }
+                
+                .income, .expense{
+                  
+                    grid-column: span 2;
+                }
+                .income, .expense, .balance{
+                  overflow:auto;
+                    background: #FCF6F9;
+                    border: 2px solid #FFFFFF;
+                    box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
+                    border-radius: 20px;
+                    padding: 1rem;
+                    p{
+                        font-size: 3rem;
+                        font-weight: 700;
+                    }
+                }
 
-    .history-con {
-      grid-column: 4 / -1;
-      h2 {
-        margin: 1rem 0;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-      .salary-title {
-        font-size: 1.2rem;
-        span {
-          font-size: 1.8rem;
+                .balance{
+                    grid-column: 2 / 4;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    p{
+                        color: var(--color-green);
+                        opacity: 0.6;
+                        font-size: 4rem;
+                    }
+                }
+            }
         }
-      }
-      .popup {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        color: white;
-        padding: 1rem;
-        font-size: 1.4rem;
-        z-index: 10;
-      }
-      .salary-item {
-        background: #FCF6F9;
-        border: 2px solid #FFFFFF;
-        box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
-        padding: 1rem;
-        border-radius: 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        p {
-          font-weight: 600;
-          font-size: 1.6rem;
+
+        .history-con{
+            grid-column: 4 / -1;
+            h2{
+                margin: 1rem 0;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .salary-title{
+                font-size: 1.2rem;
+                span{
+                    font-size: 1.8rem;
+                }
+            }
+            .popup {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background: rgba(0, 0, 0, 0.5);
+              color: white;
+              padding: 1rem;
+              font-size: 1.4rem;
+              z-index: 10;
+            }
+            .salary-item{
+                background: #FCF6F9;
+                border: 2px solid #FFFFFF;
+                box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
+                padding: 1rem;
+                border-radius: 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                p{
+                    font-weight: 600;
+                    font-size: 1.6rem;
+                }
+            }
         }
-      }
     }
-  }
 `;
-
 
 export default Transaction
 
