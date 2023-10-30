@@ -11,7 +11,7 @@ function Login() {
   return (
     <LoginStyled>
       <InnerLayout>
-        <h1>Login</h1>
+    
         <div className="login-content">
           <div className="form-container">
             <LoginForm />

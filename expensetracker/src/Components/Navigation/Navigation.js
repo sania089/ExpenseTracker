@@ -118,7 +118,8 @@ const NavStyled = styled.nav`
         display: flex;
         flex-direction: column;
         li{
-            display: grid;
+            display: flex;
+            
             grid-template-columns: 40px auto;
             align-items: center;
             margin: .6rem 0;
@@ -130,17 +131,23 @@ const NavStyled = styled.nav`
             position: relative;
             i{
                 color: rgba(34, 34, 96, 0.6);
-                font-size: 1.4rem;
+                padding: 0 10px;
+                font-size: 2rem;
+
                 transition: all .4s ease-in-out;
+            }
+            a{
+                text-decoration: none;
             }
         }
         .buttonss{
             background-color:#fff ;
-            font-size:25px;
-            padding: 10px 60px;
-            border-radius: 20px;
+            font-size:22px;
+            padding: 10px 30px;
+            border-radius: 15px;
             margin: 10px 0px;
             cursor: pointer;
+            
             
           }
     }

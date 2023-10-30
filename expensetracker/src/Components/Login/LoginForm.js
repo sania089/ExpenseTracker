@@ -54,7 +54,10 @@ function LoginForm() {
   };
 
   return (
-    
+    <FormContainer>
+      <LoginHeading>Login</LoginHeading>
+      <FormBox>
+      
     <FormStyled onSubmit={handleSubmit}>
       <div className="input-control">
         <input
@@ -97,43 +100,105 @@ function LoginForm() {
         
       </div>
     </FormStyled>
+
+    </FormBox>
+    </FormContainer>
   );
 }
+
+const FormContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  height: 100vh;
+`;
+
+const LoginHeading = styled.h2`
+  font-size: 5rem;
+  color: var(--color-text);
+  margin-bottom: 1rem;
+`;
+
+const FormBox = styled.div`
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  height: 500px; /* Increase the height to make it bigger */
+  width: 400px;  /* Increase the width to make it bigger */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+`;
 
 const FormStyled = styled.form`
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  input, textarea, select{
-    font-family: inherit;
-    font-size: inherit;
-    outline: none;
-    border: none;
-    padding: .5rem 1rem;
-    border-radius: 5px;
-    border: 2px solid #fff;
-    background: transparent;
-    resize: none;
-    box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
-    color: rgba(34, 34, 96, 0.9);
-    &::placeholder{
-        color: rgba(34, 34, 96, 0.4);
-    }
-  }
-  .input-control {
-    input {
-      width: 100%;
-    }
-  }
-  .submit-btn{
-    button{
-        box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
-        &:hover{
-            background: var(--color-green) !important;
-        }
-    }
-}
- 
-`;
 
+  input {
+    width: 100%;
+    padding: 1.5rem;
+    border: none;
+    border-bottom: 2px solid var(--color-accent);
+    background: transparent;
+    color: var(--color-text);
+    font-size: 1.5rem;
+    transition: border-bottom 0.2s;
+
+    &::placeholder {
+      color: var(--color-placeholder);
+      
+    }
+
+    &:focus {
+      border-bottom: 2px solid var(--color-accent-hover);
+    }
+  }
+
+  .submit-btn {
+    display: flex;
+    justify-content: center;
+    button {
+      width: 100%;
+      padding: 1rem;
+      border: none;
+      border-radius: 30px;
+      background: var(--color-accent);
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      justify-content: center;
+      transition: background 0.2s;
+
+      &:hover {
+        background: var(--color-accent-hover);
+      }
+    }
+  }
+
+  .not-a-member {
+    display: flex;
+    justify-content: center;
+    button {
+      width: 100%;
+      padding: 1rem;
+      border: none;
+      border-radius: 30px;
+      background: var(--color-green);
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      justify-content: center;
+      transition: background 0.2s;
+
+      &:hover {
+        background: var(--color-green-hover);
+      }
+    }
+  }
+};
+`
 export default LoginForm;
