@@ -17,7 +17,7 @@ exports.addIncome = async (req, res) => {
         if (!title) {
             return res.status(400).json({ message: 'Title is required!' });
         }
-    
+        console.log('title')
         // Validate category
         if (!category) {
             return res.status(400).json({ message: 'Category is required!' });

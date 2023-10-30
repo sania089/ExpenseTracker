@@ -2,14 +2,18 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Button from "../Button/Button";
 import { useGlobalContext } from "../../context/globalContext";
+import { useNavigate } from 'react-router-dom';
+
 
 function LoginForm() {
+  const navigate = useNavigate();
 //   const { loginUser } = useGlobalContext();
 
   const [inputState, setInputState] = useState({
     username: "",
     password: "",
   });
+  
 
   const { username, password } = inputState;
 
@@ -27,6 +31,23 @@ function LoginForm() {
       username: "",
       password: "",
     });
+  };
+  const login = async () => {
+    const loggedInResponse = await fetch("http://localhost:5000/api/v1/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({username: username, password: password}),
+    });
+    const loggedIn = await loggedInResponse.json();
+    console.log(loggedIn)
+    if (loggedIn.message === "Invalid credentials. Password does not match." ||loggedIn.message === "Both username and password are required." || loggedIn.message === "Invalid credentials. User not found."  ) {
+     console.log('not logged in')
+      
+    }
+    else {
+      console.log('logged in')
+      navigate("/dashboard");
+    }
   };
 
   return (
@@ -56,7 +77,10 @@ function LoginForm() {
           bRad="30px"
           bg="var(--color-accent)"
           color="#fff"
+          onClick={login}
+          
         />
+        
       </div>
     </FormStyled>
   );

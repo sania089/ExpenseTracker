@@ -3,37 +3,71 @@ import styled from 'styled-components'
 import avatar from '../../img/avatar.png'
 import { menuItems } from '../../utils/menuItems'
 import { signout } from '../../utils/Icons'
+import { useNavigate,useHistory } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 
 function Navigation({active, setActive}) {
-    
+    // const navigate = useNavigate();  
+    // const history = useHistory(); 
     return (
+        // <NavStyled>
+        //     <div className="user-con">
+        //         <img src={avatar} alt="" />
+        //         <div className="text">
+        //             <h2>Mike</h2>
+        //             <p>Your Money</p>
+        //         </div>
+        //     </div>
+        //     <ul className="menu-items">
+        //         {menuItems.map((item) => {
+
+        //             return  <li
+                    
+        //                 key={item.id}
+        //                 onClick={() => history.push(item.link)}
+        //                 className={active === item.id ? 'active': ''}
+        //             >
+        //                 <Link to = "/dashboard">hsdb</Link>
+        //                 {item.icon}
+        //                 <span>{item.title}</span>
+                        
+        //             </li>
+                    
+        //         //     return <li>
+        //         //     <Link to= {item.link} >{item.title}</Link>
+        //         //   </li>
+          
+        //         })}
+        //     </ul>
+        //     <div className="bottom-nav">
+        //         <li>
+        //             {signout} Sign Out
+        //         </li>
+        //     </div>
+        // </NavStyled>
         <NavStyled>
             <div className="user-con">
-                <img src={avatar} alt="" />
-                <div className="text">
-                    <h2>Mike</h2>
-                    <p>Your Money</p>
-                </div>
+                 <img src={avatar} alt="" />
+                 <div className="text">
+                     <h2>Mike</h2>
+                     <p>Your Money</p>
+                 </div>
             </div>
             <ul className="menu-items">
-                {menuItems.map((item) => {
-                    return <li
-                        key={item.id}
-                        onClick={() => setActive(item.id)}
-                        className={active === item.id ? 'active': ''}
-                    >
-                        {item.icon}
-                        <span>{item.title}</span>
-                    </li>
-                })}
-            </ul>
-            <div className="bottom-nav">
-                <li>
-                    {signout} Sign Out
-                </li>
-            </div>
-        </NavStyled>
+            {menuItems.map((item) => {
+            return (
+            <li key={item.id}>
+              <Link to={item.link}>
+                {item.icon}
+                <span>{item.title}</span>
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </NavStyled>
+
     )
 }
 

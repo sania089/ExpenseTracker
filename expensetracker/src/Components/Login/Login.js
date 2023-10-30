@@ -3,8 +3,11 @@ import styled from "styled-components";
 import { useGlobalContext } from "../../context/globalContext";
 import { InnerLayout } from "../../styles/Layouts";
 import LoginForm from "./LoginForm";
+import Button from "../Button/Button";
 
 function Login() {
+  
+  
   return (
     <LoginStyled>
       <InnerLayout>
@@ -12,6 +15,18 @@ function Login() {
         <div className="login-content">
           <div className="form-container">
             <LoginForm />
+            
+            {/* <div className="submit-btn">
+        <Button
+          name="Login"
+          bPad=".8rem 1.6rem"
+          bRad="30px"
+          bg="var(--color-accent)"
+          color="#fff"
+          
+          
+        />
+      </div> */}
           </div>
         </div>
       </InnerLayout>
@@ -47,6 +62,11 @@ display: flex;
             flex: 1;
         }
     }
+button{name="Login";
+bPad=".8rem 1.6rem";
+bRad="30px";
+bg="var(--color-accent)";
+color="#fff";}
 `;
 
 export default Login;
