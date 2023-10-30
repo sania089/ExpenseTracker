@@ -57,12 +57,14 @@ function Navigation({active, setActive}) {
             <ul className="menu-items">
             {menuItems.map((item) => {
             return (
+                <div className='buttonss'>
             <li key={item.id}>
               <Link to={item.link}>
                 {item.icon}
                 <span>{item.title}</span>
               </Link>
             </li>
+            </div>
           );
         })}
       </ul>
@@ -127,6 +129,15 @@ const NavStyled = styled.nav`
                 transition: all .4s ease-in-out;
             }
         }
+        .buttonss{
+            background-color:#fff ;
+            font-size:25px;
+            padding: 10px 60px;
+            border-radius: 20px;
+            margin: 10px 0px;
+            cursor: pointer;
+            
+          }
     }
 
     .active{

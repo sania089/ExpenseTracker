@@ -60,6 +60,7 @@ function App() {
         <MainLayout>
           <Navigation active={active} setActive={setActive} />
           <main>
+            
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
@@ -67,10 +68,9 @@ function App() {
             <Route path="/Transaction" element={<Transaction />} />
             <Route path="/incomes" element={<Income />} />
             <Route path="/expense" element={<Expenses />} />
-            <Route path="/expense" element={<PaymentGateway />} />
-
-            
+            <Route path="/payment" element={<PaymentGateway />} />
           </Routes>
+          
           </main>
           
         </MainLayout>
@@ -94,6 +94,7 @@ const AppStyled = styled.div`
     &::-webkit-scrollbar {
       width: 0;
     }
+    
   }
 `;
 
