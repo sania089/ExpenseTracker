@@ -1,4 +1,4 @@
-import {dashboard, expenses, transactions, trend, login,card} from '../utils/Icons'
+import {dashboard, expenses, transactions, trend,card} from '../utils/Icons'
 
 export const menuItems = [
     

@@ -149,11 +149,11 @@ const DashboardStyled = styled.div`
         overflow: auto;
         .chart-con{
             grid-column: 1 / 4;
-            height: 400px;
+            height: 300px;
             .amount-con{
               position: absolute;
               top: 25%;
-              right: 2.5%;
+              right: 4%;
                 display: grid;
                 grid-template-columns: repeat(4, 1fr);
                 gap: 2rem;
@@ -166,16 +166,18 @@ const DashboardStyled = styled.div`
                 }
                 
                 .income, .expense{
+                  
                     grid-column: span 2;
                 }
                 .income, .expense, .balance{
+                  overflow:auto;
                     background: #FCF6F9;
                     border: 2px solid #FFFFFF;
                     box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
                     border-radius: 20px;
                     padding: 1rem;
                     p{
-                        font-size: 3.5rem;
+                        font-size: 3rem;
                         font-weight: 700;
                     }
                 }
@@ -189,7 +191,7 @@ const DashboardStyled = styled.div`
                     p{
                         color: var(--color-green);
                         opacity: 0.6;
-                        font-size: 4.5rem;
+                        font-size: 4rem;
                     }
                 }
             }
