@@ -1,4 +1,3 @@
-
 import styled from 'styled-components';
 import { useGlobalContext } from '../../context/globalContext';
 import History from '../../History/History';
@@ -7,6 +6,9 @@ import { rupee } from '../../utils/Icons';
 import { PieChart } from 'react-minimal-pie-chart';
 import React, { useState , useEffect} from 'react';
 import Chart from '../Chart/Chart';
+import Dashboard from '../../Components/Dashboard/Dashboard';
+
+
 const Transaction = () => {
   const {
     totalExpenses,
@@ -85,7 +87,9 @@ const Transaction = () => {
     };
   });
   return (
+    
     <DashboardStyled>
+      
       <InnerLayout>
         <h1>Visualize your expenses</h1>
         <div className="stats-con">

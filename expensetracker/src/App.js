@@ -15,6 +15,7 @@ import { useGlobalContext } from './context/globalContext';
 import PaymentGateway from "./Components/Payment/Payment";
 
 function App() {
+  const { isLoggedIn } = useGlobalContext();
   const [active, setActive] = React.useState(1);
   const [showLogin,setShowLogin] = useState(true); // Track login state
   // const toggleLogin = () => {
@@ -58,7 +59,8 @@ function App() {
       <AppStyled bg={bg} className="App">
         {orbMemo}
         <MainLayout>
-          <Navigation active={active} setActive={setActive} />
+          { isLoggedIn && <Navigation active={active} setActive={setActive} />}
+          
           <main>
           <Routes>
             <Route path="/" element={<Login />} />

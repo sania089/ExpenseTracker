@@ -5,9 +5,14 @@ import { menuItems } from '../../utils/menuItems'
 import { signout } from '../../utils/Icons'
 import { useNavigate,useHistory } from 'react-router-dom'
 import { Link } from "react-router-dom";
-
+import { useGlobalContext } from '../../context/globalContext'
 
 function Navigation({active, setActive}) {
+    const { isLoggedIn } = useGlobalContext();
+    // if (!isLoggedIn) {
+    //     return null;
+    //   }
+    
     // const navigate = useNavigate();  
     // const history = useHistory(); 
     return (

@@ -15,6 +15,7 @@ export const GlobalProvider = ({children}) => {
     const [expenses, setExpenses] = useState([])
     const [error, setError] = useState(null)
     const [signtry, setDetail] =useState([])
+    const [isLoggedIn, setIsLoggedIn] = useState(true);
 
     //calculate incomes
     const addIncome = async (income) => {
@@ -103,20 +104,14 @@ export const GlobalProvider = ({children}) => {
               username,
               password,
             });
+            // setIsLoggedIn(true);
             setDetail(response.data)
             console.log(response.data)
-      
-            // Here you can handle the login success, e.g., store user data, set tokens, etc.
-      
-            // For example, if you're using JWT tokens, you might do something like this:
             const token = response.data.token;
-            // Store the token in local storage or a cookie for future authenticated requests.
-      
-            // Handle any other login-related logic.
       
           } catch (error) {
             setError(error.response.data.message);
-            // Handle login error or show appropriate messages to the user.
+            
           }
           
         };
@@ -127,7 +122,6 @@ export const GlobalProvider = ({children}) => {
             incomes,
             deleteIncome,
             expenses,
-           
             totalIncome,
             addExpense,
             getExpenses,
@@ -137,7 +131,10 @@ export const GlobalProvider = ({children}) => {
             transactionHistory,
             addDetails,
             getDetails,
-            loginUser
+            loginUser,
+            isLoggedIn,
+            setIsLoggedIn,
+
 
         }}>
             {children}
