@@ -19,25 +19,6 @@ function Signup() {
                     <div className="form-container">
                         <SignupForm />
                     </div>
-                    {/* <div className="detail">
-                        {signtry.map((detail) => {
-                            const {name,username,password,age,profession} = detail;
-                            return <>
-
-                            </>
-                            
-                            // <SignupItem
-                            //     key={_id}
-                            //     id={_id} 
-                            //     name={name} 
-                            //     dusername={username} 
-                            //     password={password} 
-                            //     age={age} 
-                            //     profession={profession}
-                            //     indicatorColor="var(--color-green)"
-                            // />
-                        })}
-                    </div> */}
                 </div>
             </InnerLayout>
         </SignupStyled>

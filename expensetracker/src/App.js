@@ -10,6 +10,9 @@ import Expenses from './Components/Expenses/Expenses';
 import Transaction from './Components/Transactions/Transaction';
 import Signup from './Components/signup/signup';
 import { useGlobalContext } from './context/globalContext';
+import Login from './Components/Login/Login';
+
+
 
 function App() {
   const [active , setActive] = React.useState(1)
@@ -22,13 +25,15 @@ function App() {
       case 1:
         return <Signup />
       case 2:
-        return <Dashboard />
-      case 3:
         return <Transaction />
+      case 3:
+        return <Dashboard />
       case 4:
         return <Income />
       case 5: 
         return <Expenses />
+      case 6:
+        return <Login />
       default: 
         return <Dashboard />
     }

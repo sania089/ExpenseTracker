@@ -97,6 +97,29 @@ export const GlobalProvider = ({children}) => {
         setDetail(response.data)
         console.log(response.data)
         }
+    const loginUser = async (username,password)=>{
+        try {
+            const response = await axios.post(`${BASE_URL}login`, {
+              username,
+              password,
+            });
+            setDetail(response.data)
+            console.log(response.data)
+      
+            // Here you can handle the login success, e.g., store user data, set tokens, etc.
+      
+            // For example, if you're using JWT tokens, you might do something like this:
+            const token = response.data.token;
+            // Store the token in local storage or a cookie for future authenticated requests.
+      
+            // Handle any other login-related logic.
+      
+          } catch (error) {
+            setError(error.response.data.message);
+            // Handle login error or show appropriate messages to the user.
+          }
+          
+        };
     return (
         <GlobalContext.Provider value={{
             addIncome,
@@ -113,7 +136,8 @@ export const GlobalProvider = ({children}) => {
             totalBalance,
             transactionHistory,
             addDetails,
-            getDetails
+            getDetails,
+            loginUser
 
         }}>
             {children}

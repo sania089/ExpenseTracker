@@ -6,6 +6,7 @@ import { InnerLayout } from '../../styles/Layouts';
 import { rupee } from '../../utils/Icons';
 import { PieChart } from 'react-minimal-pie-chart';
 import React, { useState , useEffect} from 'react';
+import Chart from '../Chart/Chart';
 const Transaction = () => {
   const {
     totalExpenses,
@@ -86,7 +87,7 @@ const Transaction = () => {
   return (
     <DashboardStyled>
       <InnerLayout>
-        <h1>All Transactions</h1>
+        <h1>Visualize your expenses</h1>
         <div className="stats-con">
           <div className="chart-con">
             <PieChart
@@ -104,49 +105,32 @@ const Transaction = () => {
                 </p>
               </div>
             )}
-            <div className="amount-con">
-              <div className="income">
-                <h2>Total Income</h2>
-                <p>
-                  {rupee} {totalIncome()}
-                </p>
-              </div>
-              <div className="expense">
-                <h2>Total Expense</h2>
-                <p>
-                  {rupee} {totalExpenses()}
-                </p>
-              </div>
-              <div className="balance">
-                <h2>Total Balance</h2>
-                <p>
-                  {rupee} {totalBalance()}
-                </p>
-              </div>
-            </div>
+            
           </div>
-          <div className="history-con">
-             <History />
-             <h2 className="salary-title">Min <span>Salary</span>Max</h2>
-
-                         <div className="salary-item">
-                             <p>
-                                 Rs{Math.min(...incomes.map(item => item.amount))}
-                             </p>
-                             <p>
-                                 Rs{Math.max(...incomes.map(item => item.amount))}
-                             </p>
-                         </div>
-                         <h2 className="salary-title">Min <span>Expense</span>Max</h2>
-                         <div className="salary-item">
-                             <p>
-                                 Rs{Math.min(...expenses.map(item => item.amount))}
-                             </p>
-                             <p>
-                                 Rs{Math.max(...expenses.map(item => item.amount))}
-                             </p>
-                         </div>
-                     </div>
+          <div className="chart-con">
+                        <Chart />
+                        <div className="amount-con">
+                            <div className="income">
+                                <h2>Total Income</h2>
+                                <p>
+                                    {rupee} {totalIncome()}
+                                </p>
+                            </div>
+                            <div className="expense">
+                                <h2>Total Expense</h2>
+                                <p>
+                                    {rupee} {totalExpenses()}
+                                </p>
+                            </div>
+                            <div className="balance">
+                                <h2>Total Balance</h2>
+                                <p>
+                                    {rupee} {totalBalance()}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+          
                  </div>
              </InnerLayout>
          </DashboardStyled>
@@ -163,10 +147,20 @@ const DashboardStyled = styled.div`
             grid-column: 1 / 4;
             height: 400px;
             .amount-con{
+              position: absolute;
+              top: 25%;
+              right: 2.5%;
                 display: grid;
                 grid-template-columns: repeat(4, 1fr);
                 gap: 2rem;
                 margin-top: 2rem;
+                
+                
+                .income,
+                .expense {
+                  grid-column: span 2;
+                }
+                
                 .income, .expense{
                     grid-column: span 2;
                 }
