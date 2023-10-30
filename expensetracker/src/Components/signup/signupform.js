@@ -5,8 +5,27 @@ import "react-datepicker/dist/react-datepicker.css";
 import Button from "../Button/Button";
 import { plus } from "../../utils/Icons";
 import { useGlobalContext } from "../../context/globalContext";
+import { useNavigate } from 'react-router-dom';
 
 function SignupForm(){
+    const navigate = useNavigate();
+    const signup = async () => {
+        const signupResponse = await fetch("http://localhost:5000/api/v1/signup", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({username: username, password: password}),
+        });
+        const signup = await signupResponse.json();
+        console.log(signup)
+        if (signup.message === "All fields are required!" ||signup.message === "You must be above 15 years old!" || signup.message === "Username already exists"  ) {
+         console.log('not signed in')
+          
+        }
+        else {
+          console.log('signed in')
+          navigate("/dashboard");
+        }
+      };
     const{addDetails, getDetails} = useGlobalContext()
     const [inputState, setInputState] = useState({
         name: '',

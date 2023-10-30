@@ -15,18 +15,6 @@ function Login() {
         <div className="login-content">
           <div className="form-container">
             <LoginForm />
-            
-            {/* <div className="submit-btn">
-        <Button
-          name="Login"
-          bPad=".8rem 1.6rem"
-          bRad="30px"
-          bg="var(--color-accent)"
-          color="#fff"
-          
-          
-        />
-      </div> */}
           </div>
         </div>
       </InnerLayout>

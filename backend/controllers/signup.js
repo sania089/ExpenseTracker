@@ -10,6 +10,7 @@ exports.addDetails = async (req, res) => {
         age,
         profession
     })
+    const user = await SignupSchema.findOne({ username: username });
     try {
         //validations
         if(!name || !username || !age || !password || !profession){
@@ -17,6 +18,9 @@ exports.addDetails = async (req, res) => {
         }
         if(!age === 'number' || age <= 15  ){
             return res.status(400).json({message: 'You must be above 15 years old!'})
+        }
+        if(username === user.username){
+            return res.status(400).json({message: 'Username already exists'})  
         }
         await Signup.save()
         res.status(201).json({message: 'Details added'})

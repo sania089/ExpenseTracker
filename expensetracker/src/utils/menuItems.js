@@ -1,12 +1,7 @@
 import {dashboard, expenses, transactions, trend, login,card} from '../utils/Icons'
 
 export const menuItems = [
-    {
-        id: 1,
-        title: "Sign Up",
-        icon: login,
-        link: "/signup",
-    },
+    
     {
         id: 2,
         title: 'Dashboard',

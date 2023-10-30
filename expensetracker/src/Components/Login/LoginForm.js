@@ -13,7 +13,10 @@ function LoginForm() {
     username: "",
     password: "",
   });
-  
+
+  const notAMember = () => {
+    navigate('/signup'); 
+  };
 
   const { username, password } = inputState;
 
@@ -51,6 +54,7 @@ function LoginForm() {
   };
 
   return (
+    
     <FormStyled onSubmit={handleSubmit}>
       <div className="input-control">
         <input
@@ -80,6 +84,16 @@ function LoginForm() {
           onClick={login}
           
         />
+        </div>
+        <div className="not-a-member">
+        <Button
+          name="Not a Member"
+          bPad=".8rem 1.6rem"
+          bRad="30px"
+          bg="var(--color-green)" 
+          color="#fff"
+          onClick={notAMember}
+          />
         
       </div>
     </FormStyled>
