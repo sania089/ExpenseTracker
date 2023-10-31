@@ -40,7 +40,8 @@ function Form(){
                 value={title}
                 name={"title"}
                 placeholder="Salary Title"
-                onChange={handleInput('title')}
+                onChange={handleInput('title') }
+                required
 
                 />
 
@@ -51,6 +52,7 @@ function Form(){
                 name={"amount"}
                 placeholder="Salary amount"
                 onChange={handleInput('amount')}
+                required
 
                 />
                 
@@ -83,7 +85,7 @@ function Form(){
                 </select>
             </div>
             <div class="input-control">
-                <textarea name="description" value={description} placeholder="Add a reference" cols="30" rows="4" onChange={handleInput("description")}>
+                <textarea name="description" value={description} placeholder="Add a reference" cols="30" rows="4" onChange={handleInput("description")} required>
 
                 </textarea>
             </div>

@@ -6,6 +6,7 @@ import Button from "../Button/Button";
 import { plus } from "../../utils/Icons";
 import { useGlobalContext } from "../../context/globalContext";
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function SignupForm(){
     const navigate = useNavigate();
@@ -87,7 +88,7 @@ function SignupForm(){
             </div>
             <div className="input-control">
                 <input 
-                type="text" 
+                type="password" 
                 value={password}
                 name={"Password"}
                 placeholder="Enter your password"
@@ -108,6 +109,7 @@ function SignupForm(){
 
             </div>
             <div className="submit-btn">
+                <Link to ="/dashboard">
                 <Button 
                     name={'Add Details'}
                     icon={plus}
@@ -116,6 +118,18 @@ function SignupForm(){
                     bg={'var(--color-accent'}
                     color={'#fff'}
                 />
+                </Link>
+                <div className="submit-button">
+                <Link to = "/"> 
+                <Button 
+                    name={'Already a Member?'}
+                    bPad={".8rem 1.6rem"}
+                    bRad={"30px"}
+                    bg="var(--color-accent)" 
+                    color="#fff"
+                />
+                </Link>
+                </div>
             </div>
 
         </FormStyled>
@@ -154,6 +168,16 @@ const FormStyled=styled.form`
                 background: var(--color-green) !important;
             }
         }
+    }
+    .submit-button{
+        button{
+       
+        box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
+            &:hover{
+                background: var(--color-green) !important;
+            }
+        
+
     }
 
 

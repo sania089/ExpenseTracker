@@ -13,7 +13,7 @@ exports.addExpense = async (req, res) => {
     })
 
     try {
-        //validations
+        
         if(!title || !category || !description || !date){
             // return res.status(400).json({message: 'All fields are required!'})
             console.log('all fields')

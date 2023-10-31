@@ -13,32 +13,26 @@ exports.addIncome = async (req, res) => {
     })
 
     try {
-        // Validate title
+        
         if (!title) {
             return res.status(400).json({ message: 'Title is required!' });
         }
         console.log('title')
-        // Validate category
+        
         if (!category) {
             return res.status(400).json({ message: 'Category is required!' });
         }
     
-        // Validate description
         if (!description) {
             return res.status(400).json({ message: 'Description is required!' });
         }
     
-        // Validate date
         if (!date) {
             return res.status(400).json({ message: 'Date is required!' });
         }
-    
-        // Validate amount (positive number)
         if (isNaN(amount) || amount <= 0) {
             return res.status(400).json({ message: 'Amount must be a positive number!' });
         }
-    
-        // If all conditions pass, save the income
         await income.save();
     
         res.status(200).json({ message: 'Income Added' });

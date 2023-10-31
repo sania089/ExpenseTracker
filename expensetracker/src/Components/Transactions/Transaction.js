@@ -153,18 +153,15 @@ const DashboardStyled = styled.div`
             .amount-con{
               position: absolute;
               z-index: 0;
-              top: 25%;
+              top: 10%;
               right: 4%;
                 display: grid;
                 grid-template-columns: repeat(4, 1fr);
                 gap: 2rem;
                 margin-top: 2rem;
+                overflow-y: auto;
                 
                 
-                .income,
-                .expense {
-                  grid-column: span 2;
-                }
                 
                 .income, .expense{
                   
@@ -189,6 +186,7 @@ const DashboardStyled = styled.div`
                     flex-direction: column;
                     justify-content: center;
                     align-items: center;
+                    overflow-y: auto;
                     p{
                         color: var(--color-green);
                         opacity: 0.6;

@@ -13,6 +13,7 @@ import Signup from './Components/signup/signup';
 import Login from './Components/Login/Login';
 import { useGlobalContext } from './context/globalContext';
 import PaymentGateway from "./Components/Payment/Payment";
+import AfterPay from "./Components/Payment/AfterPay";
 
 function App() {
   const { isLoggedIn } = useGlobalContext();
@@ -71,6 +72,7 @@ function App() {
             <Route path="/incomes" element={<Income />} />
             <Route path="/expense" element={<Expenses />} />
             <Route path="/payment" element={<PaymentGateway />} />
+            <Route path="/afterpay" element={<AfterPay />} />
           </Routes>
           
           </main>

@@ -65,6 +65,7 @@ function ExpenseForm() {
             {error && <p className='error'>{error}</p>}
             <div className="input-control">
                 <input 
+                required
                     type="text" 
                     value={title}
                     name={'title'} 
@@ -74,6 +75,7 @@ function ExpenseForm() {
             </div>
             <div className="input-control">
                 <input value={amount}  
+                required
                     type="text" 
                     name={'amount'} 
                     placeholder={'Expense Amount'}
@@ -82,6 +84,7 @@ function ExpenseForm() {
             </div>
             <div className="input-control">
                 <DatePicker 
+                required
                     id='date'
                     placeholderText='Enter A Date'
                     selected={date}
@@ -108,7 +111,8 @@ function ExpenseForm() {
             {/* <PieChart categoryCount={categoryCount}/> */}
 
             <div className="input-control">
-                <textarea name="description" value={description} placeholder='Add A Reference' id="description" cols="30" rows="4" onChange={handleInput('description')}></textarea>
+                required
+                <textarea name="description" value={description} placeholder='Add A Reference' id="description" cols="30" rows="4" onChange={handleInput('description')} required></textarea>
             </div>
             <div className="submit-btn">
                 <Button 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Button from '../Button/Button';
+import { Link } from 'react-router-dom';
 
 function PaymentGateway() {
     const [paymentMethod, setPaymentMethod] = useState('card');
@@ -10,6 +11,8 @@ function PaymentGateway() {
     const [nameOnCard, setNameOnCard] = useState('');
     const [upiId, setUpiId] = useState('');
     const [paymentStatus, setPaymentStatus] = useState('');
+    const [upipin, setUpipin] = useState('');
+    const [allFieldsFilled, setAllFieldsFilled] = useState(false);
 
     const handlePayment = async (e) => {
         e.preventDefault();
@@ -20,93 +23,144 @@ function PaymentGateway() {
         }
     };
 
+
+    const checkAllFieldsFilled = () => {
+        if (paymentMethod === 'card') {
+            setAllFieldsFilled(
+                cardNumber !== '' &&
+                expirationDate !== '' &&
+                cvv !== '' &&
+                nameOnCard !== ''
+            );
+        } else if (paymentMethod === 'upi') {
+            setAllFieldsFilled(upiId !== '' && upipin !== '');
+        }
+    };
+
     return (
-        
         <Paymentstyled>
-        <div className='pay'>
-            <h1>Payment Gateway</h1>
-            <div >
-                <LabelStyled><h2>Select Payment Method:</h2></LabelStyled>
-                <SelectStyled onChange={(e) => setPaymentMethod(e.target.value)}>
-                    <option value="card" >Credit/Debit Card</option>
-                    <option value="upi" >UPI</option>
-                </SelectStyled>
+            <div className="pay">
+                <h1>Payment Gateway</h1>
+                <div>
+                    <LabelStyled>
+                        <h2>Select Payment Method:</h2>
+                    </LabelStyled>
+                    <SelectStyled onChange={(e) => setPaymentMethod(e.target.value)}>
+                        <option value="card">Credit/Debit Card</option>
+                        <option value="upi">UPI</option>
+                    </SelectStyled>
+                </div>
+                {paymentMethod === 'card' && (
+                    <form onSubmit={handlePayment}>
+                        <LabelStyled htmlFor="card-number" required>
+                            <h3>Card Number</h3>
+                        </LabelStyled>
+                        <InputStyled
+                            type="text"
+                            id="card-number"
+                            placeholder="Card Number"
+                            required
+                            value={cardNumber}
+                            onChange={(e) => {
+                                setCardNumber(e.target.value);
+                                checkAllFieldsFilled();
+                            }}
+                        />
+
+                        <LabelStyled htmlFor="expiration-date" required>
+                            <h3>Expiration Date</h3>
+                        </LabelStyled>
+                        <InputStyled
+                            type="text"
+                            id="expiration-date"
+                            placeholder="MM/YY"
+                            required
+                            value={expirationDate}
+                            onChange={(e) => {
+                                setExpirationDate(e.target.value);
+                                checkAllFieldsFilled();
+                            }}
+                        />
+
+                        <LabelStyled htmlFor="cvv" required>
+                            <h3>CVV</h3>
+                        </LabelStyled>
+                        <InputStyled
+                            type="text"
+                            id="cvv"
+                            placeholder="CVV"
+                            required
+                            value={cvv}
+                            onChange={(e) => {
+                                setCVV(e.target.value);
+                                checkAllFieldsFilled();
+                            }}
+                        />
+
+                        <LabelStyled htmlFor="name-on-card" required>
+                            <h3>Name on Card</h3>
+                        </LabelStyled>
+                        <InputStyled
+                            type="text"
+                            id="name-on-card"
+                            placeholder="Name on Card"
+                            required
+                            value={nameOnCard}
+                            onChange={(e) => {
+                                setNameOnCard(e.target.value);
+                                checkAllFieldsFilled();
+                            }}
+                        />
+                        <Link to="/afterpay">
+                            <ButtonStyled type="submit" disabled={!allFieldsFilled}>
+                                Pay Now
+                            </ButtonStyled>
+                        </Link>
+                    </form>
+                )}
+                {paymentMethod === 'upi' && (
+                    <form onSubmit={handlePayment}>
+                        <LabelStyled htmlFor="upi-id" required>
+                            <h3>UPI ID</h3>
+                        </LabelStyled>
+                        <InputStyled
+                            type="text"
+                            id="upi-id"
+                            placeholder="Your UPI ID"
+                            required
+                            value={upiId}
+                            onChange={(e) => {
+                                setUpiId(e.target.value);
+                                checkAllFieldsFilled();
+                            }}
+                        />
+                        <LabelStyled htmlFor="Pin" required>
+                            <h3>Enter Pin</h3>
+                        </LabelStyled>
+                        <InputStyled
+                            type="text"
+                            id="Pin"
+                            placeholder="Enter PIN"
+                            required
+                            value={upipin}
+                            onChange={(e) => {
+                                setUpipin(e.target.value);
+                                checkAllFieldsFilled();
+                            }}
+                        />
+                        <Link to="/afterpay">
+                            <ButtonStyled type="submit" disabled={!allFieldsFilled}>
+                                Pay Now
+                            </ButtonStyled>
+                        </Link>
+                    </form>
+                )}
+
+                <div id="payment-status">
+                    {paymentStatus && <p>{paymentStatus}</p>}
+                </div>
             </div>
-            {paymentMethod === 'card' && (
-                <form onSubmit={handlePayment}>
-                    <LabelStyled htmlFor="card-number"><h3>Card Number</h3></LabelStyled>
-                    <InputStyled
-                        type="text"
-                        id="card-number"
-                        placeholder="Card Number"
-                        required
-                        value={cardNumber}
-                        onChange={(e) => setCardNumber(e.target.value)}
-                    />
-
-                    <LabelStyled htmlFor="expiration-date"><h3>Expiration Date</h3></LabelStyled>
-                    <InputStyled
-                        type="text"
-                        id="expiration-date"
-                        placeholder="MM/YY"
-                        required
-                        value={expirationDate}
-                        onChange={(e) => setExpirationDate(e.target.value)}
-                    />
-
-                    <LabelStyled htmlFor="cvv"><h3>CVV</h3></LabelStyled>
-                    <InputStyled
-                        type="text"
-                        id="cvv"
-                        placeholder="CVV"
-                        required
-                        value={cvv}
-                        onChange={(e) => setCVV(e.target.value)}
-                    />
-
-                    <LabelStyled htmlFor="name-on-card"><h3>Name on Card</h3></LabelStyled>
-                    <InputStyled
-                        type="text"
-                        id="name-on-card"
-                        placeholder="Name on Card"
-                        required
-                        value={nameOnCard}
-                        onChange={(e) => setNameOnCard(e.target.value)}
-                    />
-
-                    <ButtonStyled type="submit">Pay Now</ButtonStyled>
-                </form>
-            )}
-            {paymentMethod === 'upi' && (
-                <form onSubmit={handlePayment}>
-                    <LabelStyled htmlFor="upi-id"><h3>UPI ID</h3></LabelStyled>
-                    <InputStyled
-                        type="text"
-                        id="upi-id"
-                        placeholder="Your UPI ID"
-                        required
-                        value={upiId}
-                        onChange={(e) => setUpiId(e.target.value)}
-                    />
-                    <LabelStyled htmlFor="Pin"><h3>Enter Pin</h3></LabelStyled>
-                    <InputStyled
-                        type="text"
-                        id="Pin"
-                        placeholder="Enter PIN"
-                        required
-                        value={upiId}
-                        onChange={(e) => setUpiId(e.target.value)}
-                    />
-                    <ButtonStyled type="submit">Pay Now</ButtonStyled>
-                </form>
-            )}
-
-            <div id="payment-status">
-                {paymentStatus && <p>{paymentStatus}</p>}
-            </div>
-        </div>
         </Paymentstyled>
-        
     );
 }
 const Paymentstyled=styled.form`
