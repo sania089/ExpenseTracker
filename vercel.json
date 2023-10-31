@@ -1,5 +1,5 @@
 {
-    "buildCommand": "npm run build",
+    "buildCommand": "cd expensetracker && npm i && npm run build",
     "outputDirectory": "build",
     "framework": "react",
     "rewrites": [
