@@ -1,4 +1,6 @@
+
 {
+    "buildCommand" : "npm run build",
     "builds":[
         {
             "src":"./app.js",
@@ -11,4 +13,5 @@
             "dest":"app.js"
         }
     ]
+    
 }
