@@ -1,34 +1,14 @@
-{
-    "buildCommand": "cd expensetracker && npm i && npm run build",
-    "outputDirectory": "build",
-    "framework": "react",
-    "rewrites": [
-      {
-        "source": "/api/(.*)",
-        "destination": "/api/index.js"
-      },
-      {
-        "source": "/(.*)",
-        "destination": "/"
-      }
+{   "buildCommand":  "cd expensetracker && npm I && npm run build"
+    "builds":[
+        {
+            "src":"./app.js",
+            "use":"@vercel/node"
+        }
     ],
-    "headers": [
-      {
-        "source": "/api/(.*)",
-        "headers": [
-          {
-            "key": "Access-Control-Allow-Origin",
-            "value": "*"
-          },
-          {
-            "key": "Access-Control-Allow-Methods",
-            "value": "GET, POST, PUT, DELETE"
-          },
-          {
-            "key": "Access-Control-Allow-Headers",
-            "value": "Content-Type, Authorization"
-          }
-        ]
-      }
+    "routes":[
+        {
+            "src":"/(.*)",
+            "dest":"app.js"
+        }
     ]
-  }
+}
